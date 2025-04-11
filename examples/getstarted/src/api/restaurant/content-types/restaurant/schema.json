@@ -34,7 +34,13 @@
       "pluginOptions": {}
     },
     "priceRange": {
-      "enum": ["very_cheap", "cheap", "average", "expensive", "very_expensive"],
+      "enum": [
+        "very_cheap",
+        "cheap",
+        "average",
+        "expensive",
+        "very_expensive"
+      ],
       "type": "enumeration",
       "pluginOptions": {
         "i18n": {
@@ -125,11 +131,6 @@
           "localized": true
         }
       }
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::category.category"
     },
     "description": {
       "type": "richtext",

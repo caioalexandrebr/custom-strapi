@@ -14,7 +14,14 @@ const defaults: Config = {
     useDefaults: true,
     directives: {
       'connect-src': ["'self'", 'https:'],
-      'img-src': ["'self'", 'data:', 'blob:', 'https://market-assets.strapi.io'],
+      'img-src': [
+        "'self'",
+        'data:',
+        'blob:',
+        'https://market-assets.strapi.io',
+        'https://placehold.co',
+        'https://i.postimg.cc',
+      ],
       'media-src': ["'self'", 'data:', 'blob:'],
       upgradeInsecureRequests: null,
     },

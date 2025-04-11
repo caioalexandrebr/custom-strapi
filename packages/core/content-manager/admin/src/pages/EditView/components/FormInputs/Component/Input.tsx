@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { InputProps, useField } from '@strapi/admin/strapi-admin';
-import { Field, Flex, IconButton } from '@strapi/design-system';
+import { Box, Field, Flex, IconButton } from '@strapi/design-system';
 import { Trash } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 
@@ -56,46 +56,57 @@ const ComponentInput = ({
 
   return (
     <Field.Root error={field.error} required={required}>
-      <Flex justifyContent="space-between">
-        <Field.Label action={labelAction}>
-          {label}
-          {attribute.repeatable && (
-            <>&nbsp;({Array.isArray(field.value) ? field.value.length : 0})</>
-          )}
-        </Field.Label>
-
-        {showResetComponent && (
-          <IconButton
-            label={formatMessage({
-              id: getTranslation('components.reset-entry'),
-              defaultMessage: 'Reset Entry',
-            })}
-            variant="ghost"
-            onClick={() => {
-              field.onChange(name, null);
-            }}
-          >
-            <Trash />
-          </IconButton>
-        )}
-      </Flex>
       {/**
        * if the field isn't repeatable then we display a button to start the field
        * TODO: should this just live in the `NonRepeatableComponent`?
        */}
-      {!attribute.repeatable && !field.value && (
-        <Initializer disabled={disabled} name={name} onClick={handleInitialisationClick} />
-      )}
-      {!attribute.repeatable && field.value ? (
-        <NonRepeatableComponent attribute={attribute} name={name} disabled={disabled} {...props}>
-          {props.children}
-        </NonRepeatableComponent>
-      ) : null}
-      {attribute.repeatable && (
-        <RepeatableComponent attribute={attribute} name={name} disabled={disabled} {...props}>
-          {props.children}
-        </RepeatableComponent>
-      )}
+
+      <details>
+        <summary>
+          <div
+            style={{
+              display: 'inline-flex',
+              width: 'calc(100% - 11px)',
+              justifyContent: 'space-between',
+            }}
+          >
+            <Field.Label action={labelAction}>
+              {label}
+              {attribute.repeatable && (
+                <>&nbsp;({Array.isArray(field.value) ? field.value.length : 0})</>
+              )}
+            </Field.Label>
+            {showResetComponent && (
+              <IconButton
+                label={formatMessage({
+                  id: getTranslation('components.reset-entry'),
+                  defaultMessage: 'Reset Entry',
+                })}
+                variant="ghost"
+                onClick={() => {
+                  field.onChange(name, null);
+                }}
+              >
+                <Trash />
+              </IconButton>
+            )}
+          </div>
+        </summary>
+
+        {!attribute.repeatable && !field.value && (
+          <Initializer disabled={disabled} name={name} onClick={handleInitialisationClick} />
+        )}
+        {!attribute.repeatable && field.value ? (
+          <NonRepeatableComponent attribute={attribute} name={name} disabled={disabled} {...props}>
+            {props.children}
+          </NonRepeatableComponent>
+        ) : null}
+        {attribute.repeatable && (
+          <RepeatableComponent attribute={attribute} name={name} disabled={disabled} {...props}>
+            {props.children}
+          </RepeatableComponent>
+        )}
+      </details>
       <Field.Error />
     </Field.Root>
   );

@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sections",
+  "info": {
+    "singularName": "section",
+    "pluralName": "sections",
+    "displayName": "Sections",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "prefixImage": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "sections"
+    },
+    "Components": {
+      "type": "dynamiczone",
+      "components": [
+        "default.button",
+        "default.title",
+        "default.plan-card",
+        "default.card",
+        "default.list",
+        "default.image",
+        "default.client-showcase"
+      ],
+      "required": true
+    }
+  }
+}

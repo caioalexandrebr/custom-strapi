@@ -657,7 +657,7 @@ const RelationsInput = ({
 /* -------------------------------------------------------------------------------------------------
  * RelationsList
  * -----------------------------------------------------------------------------------------------*/
-const RELATION_ITEM_HEIGHT = 50;
+const RELATION_ITEM_HEIGHT = 100;
 const RELATION_GUTTER = 4;
 
 interface RelationsListProps extends Pick<RelationsFieldProps, 'disabled' | 'name'> {
@@ -1057,6 +1057,15 @@ const ListItem = ({ data, index, style }: ListItemProps) => {
     [safeDocumentId, href, safeLocale, targetModel]
   );
 
+  const images = [
+    'https://i.postimg.cc/8zs5701q/Screenshot-2025-04-08-at-11-30-32.png',
+    'https://i.postimg.cc/XvCY8BBL/Screenshot-2025-04-08-at-11-30-43.png',
+    'https://i.postimg.cc/G2nhS3kC/Screenshot-2025-04-08-at-11-30-54.png',
+    'https://i.postimg.cc/3x6wmFNW/Screenshot-2025-04-08-at-11-31-05.png',
+  ];
+
+  const image = images[index];
+
   return (
     <Box
       style={style}
@@ -1069,6 +1078,7 @@ const ListItem = ({ data, index, style }: ListItemProps) => {
         <RelationItemPlaceholder />
       ) : (
         <Flex
+          height={`${RELATION_ITEM_HEIGHT}px`}
           paddingTop={2}
           paddingBottom={2}
           paddingLeft={canDrag ? 2 : 4}
@@ -1098,7 +1108,14 @@ const ListItem = ({ data, index, style }: ListItemProps) => {
                 <Drag />
               </IconButton>
             ) : null}
-            <Flex width="100%" minWidth={0} gap={4} justifyContent="space-between">
+
+            {data.targetModel === 'api::section.section' && (
+              <Box width={'300px'} height={'70px'} borderColor={'#4a4a6a'} display={'flex'}>
+                <Box as="img" src={image} width="200px" maxHeight={'80px'} />
+              </Box>
+            )}
+
+            <Flex width="100%" minWidth={0} marginLeft={2} gap={4} justifyContent="space-between">
               <Box flex={1} minWidth={0} paddingTop={1} paddingBottom={1}>
                 <RelationModal relation={documentMeta}>{label}</RelationModal>
               </Box>

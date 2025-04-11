@@ -15,18 +15,12 @@
   "attributes": {
     "name": {
       "type": "string",
-      "pluginOptions": {}
+      "pluginOptions": {},
+      "required": true
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
-    },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "temps"
+    "slug": {
+      "type": "string",
+      "required": true
     }
   }
 }

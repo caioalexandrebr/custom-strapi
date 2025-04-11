@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_default_plan_cards",
+  "info": {
+    "displayName": "PlanCard",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "price": {
+      "type": "string"
+    }
+  }
+}

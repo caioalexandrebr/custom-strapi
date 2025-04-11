@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_default_seos",
+  "info": {
+    "displayName": "SEO"
+  },
+  "options": {},
+  "attributes": {
+    "metaTitle": {
+      "type": "string",
+      "required": true
+    },
+    "metaDescription": {
+      "type": "text",
+      "required": true
+    },
+    "metaImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "canonicalURL": {
+      "type": "string"
+    },
+    "noFollow": {
+      "type": "boolean",
+      "default": false
+    },
+    "noIndex": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}

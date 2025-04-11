@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_default_client_showcases",
+  "info": {
+    "displayName": "Client Showcase"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    }
+  }
+}
